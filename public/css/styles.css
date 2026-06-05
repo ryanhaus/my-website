@@ -25,7 +25,6 @@ html::before {
     z-index: -1;
 }
 
-
 body {
     max-width: 1000px;
     min-height: 100vh;
@@ -179,6 +178,10 @@ h2 {
     padding-bottom: 1rem;
 }
 
+section {
+    margin-bottom: 3rem;
+}
+
 .portrait-box {
     flex-shrink: 0;
 }
@@ -212,7 +215,7 @@ a:hover {
     color: #0000EE;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 850px) {
     .top-info {
         flex-direction: column;
     }

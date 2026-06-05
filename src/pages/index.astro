@@ -20,66 +20,75 @@ const uniqueTags = [...new Set(allTags)].sort();
             </div>
 
             <div class="top-info-text">
-                <p>text</p>
-                <p>more text</p>
+                <p>My name is Ryan Hausmann, and I am currently a rising senior studying <b>Electrical &amp; Computer Engineering</b> at Rowan University, with a minor in Computer Science.</p>
+                <p>I love working with circuits, FPGAs, software, and more. Take a look at some of my projects on this page to see what I've been up to.</p>
+                <p style="margin-bottom: 0;">Also have a look at some of my profiles:</p>
+                <ul style="margin-top: 0;">
+                    <li><a href="https://github.com/ryanhaus" target="_blank">GitHub</a></li>
+                    <li><a href="https://linkedin.com/in/ryanhaus" target="_blank">LinkedIn</a></li>
+                </ul>
             </div>
         </section>
+        
+        <section>
+            <h2>Resume</h2>
+            <p>You can download a PDF copy of my resume <a href="/assets/resume.pdf" target="_blank">here</a>.</p>
+            <p>Also make sure to take a look around here to see some of my projects in more detail!</p>
+        </section>
 
-        <h2>Resume</h2>
-        <p>You can download a PDF copy of my resume <a href="/assets/resume.pdf" target="_blank">here</a>.</p>
-        <p>Although, this website is sort of an interactive resume, so take a look around!</p>
+        <section>
+            <h2>Projects</h2>
+            <p style="margin-bottom: 0;">Find info on some of my projects below. Click on a project to find out more.</p>
 
-        <h2>Projects</h2>
-        <p style="margin-bottom: 0;">Find info on some of my projects below. Click on a project to find out more.</p>
+            <br />
+            <div class="filter-menu">
+                <label for="tag-filter"><strong>Filter by tag:</strong></label>
+                <select id="tag-filter" class="filter-dropdown">
+                    <option value="all">[All]</option>
+                    { uniqueTags.map((tag) => (
+                        <option value={tag}>[{tag}]</option>
+                    ))}
+                </select>
+            </div>
 
-        <br />
-        <div class="filter-menu">
-            <label for="tag-filter"><strong>Filter by tag:</strong></label>
-            <select id="tag-filter" class="filter-dropdown">
-                <option value="all">[All]</option>
-                { uniqueTags.map((tag) => (
-                    <option value={tag}>[{tag}]</option>
-                ))}
-            </select>
-        </div>
+            <div class="grid">
+                { projects.map(async (project) => {
+                    const { Content } = await render(project);
 
-        <div class="grid">
-            { projects.map(async (project) => {
-                const { Content } = await render(project);
+                    return (
+                    <article class="card" data-tags={project.data.tags.join(',')}>
+                            <header class="card-header">
+                                <div class="title-group">
+                                    <h3 class="card-title">
+                                        <a href={`/projects/${project.id}`} class="card-clickable-overlay">
+                                            {project.data.title}
+                                        </a>
+                                    </h3>
 
-                return (
-                <article class="card" data-tags={project.data.tags.join(',')}>
-                        <header class="card-header">
-                            <div class="title-group">
-                                <h3 class="card-title">
-                                    <a href={`/projects/${project.id}`} class="card-clickable-overlay">
-                                        {project.data.title}
-                                    </a>
-                                </h3>
+                                    { project.data.githubUrl &&
+                                        (<a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="github-link">
+                                            <img src="/images/github-logo.svg" width="20" height="20" class="github-icon" />
+                                        </a>
+                                    )}
+                                </div>
+                                
+                                <span class="card-date">{project.data.dates}</span>
+                            </header>
 
-                                { project.data.githubUrl &&
-                                    (<a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="github-link">
-                                        <img src="/images/github-logo.svg" width="20" height="20" class="github-icon" />
-                                    </a>
+                            <p class="card-desc">{project.data.desc}</p>
+
+                            { project.data.image && <img class="card-image" src={project.data.image} alt={project.data.title} /> }
+
+                            <div class="card-tags">
+                                { project.data.tags.map((tag) => 
+                                    <span class="tag-pill">{tag}</span>
                                 )}
                             </div>
-                            
-                            <span class="card-date">{project.data.dates}</span>
-                        </header>
-
-                        <p class="card-desc">{project.data.desc}</p>
-
-                        { project.data.image && <img class="card-image" src={project.data.image} alt={project.data.title} /> }
-
-                        <div class="card-tags">
-                            { project.data.tags.map((tag) => 
-                                <span class="tag-pill">{tag}</span>
-                            )}
-                        </div>
-                    </article>
-                )
-            })}
-        </div>
+                        </article>
+                    )
+                })}
+            </div>
+        </section>
     </body>
 
     <script src="/scripts/project-filter.js" is:inline />
