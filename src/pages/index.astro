@@ -16,7 +16,7 @@ const uniqueTags = [...new Set(allTags)].sort();
 
         <section class="top-info">
             <div class="portrait-box">
-                <img src="/images/portrait.jpg" class="portrait-img" />
+                <img src="/assets/portrait.jpg" class="portrait-img" />
             </div>
 
             <div class="top-info-text">
@@ -68,7 +68,7 @@ const uniqueTags = [...new Set(allTags)].sort();
 
                                     { project.data.githubUrl &&
                                         (<a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="github-link">
-                                            <img src="/images/github-logo.svg" width="20" height="20" class="github-icon" />
+                                            <img src="/assets/github-logo.svg" width="20" height="20" class="github-icon" />
                                         </a>
                                     )}
                                 </div>
@@ -78,7 +78,7 @@ const uniqueTags = [...new Set(allTags)].sort();
 
                             <p class="card-desc">{project.data.desc}</p>
 
-                            { project.data.image && <img class="card-image" src={project.data.image} alt={project.data.title} /> }
+                            { project.data.image && <img class="card-image" src=`/assets/projects/${project.id}/${project.data.image}` alt={project.data.title} /> }
 
                             <div class="card-tags">
                                 { project.data.tags.map((tag) => 

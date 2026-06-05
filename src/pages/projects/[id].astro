@@ -21,7 +21,7 @@ const { Content } = await render(project);
     </head>
 
     <body>
-        <a href="/">&larr; Back</a>
+        <a href="#" onclick="history.back(); return false;">&larr; Back</a>
 
         <header>
             <h1>{ project.data.title }</h1>
