@@ -5,11 +5,26 @@ html, body {
 
 html {
     background-color: #c0c0c0;
+}
+
+html::before {
+    content: "";
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
     background-image: url("/images/circuit-board.webp");
     background-repeat: repeat-x repeat-y;
     background-size: auto 50vh;
     background-attachment: fixed;
+
+    opacity: 0.15;
+    z-index: -1;
 }
+
 
 body {
     max-width: 1000px;
