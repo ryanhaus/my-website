@@ -5,6 +5,10 @@ html, body {
 
 html {
     background-color: #c0c0c0;
+    background-image: url("/images/circuit-board.svg");
+    background-repeat: repeat-x repeat-y;
+    background-size: auto 100vh;
+    background-attachment: fixed;
 }
 
 body {
@@ -95,12 +99,17 @@ h2 {
     z-index: 2;
     display: inline-flex;
     color: #000000;
+    padding: 2px;
 }
 
 .github-link:hover {
     background-color: #000;
     color: #fff;
     cursor: pointer;
+}
+
+.github-link:hover .github-icon {
+    filter: invert(100%);
 }
 
 .card-date {
