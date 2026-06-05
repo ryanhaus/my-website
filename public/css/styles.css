@@ -5,9 +5,9 @@ html, body {
 
 html {
     background-color: #c0c0c0;
-    background-image: url("/images/circuit-board.svg");
+    background-image: url("/images/circuit-board.webp");
     background-repeat: repeat-x repeat-y;
-    background-size: auto 100vh;
+    background-size: auto 50vh;
     background-attachment: fixed;
 }
 
@@ -17,7 +17,7 @@ body {
     box-sizing: border-box;
 
     margin: 0 auto;
-    padding: 2rem 5%;
+    padding: 2rem 4rem;
 
     border-left: 2px solid #000;
     border-right: 2px solid #000;
@@ -155,4 +155,51 @@ h2 {
 }
 .tag-pill::after {
     content: "]";
+}
+
+.top-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+.portrait-box {
+    flex-shrink: 0;
+}
+
+.portrait-img {
+    width: 250px;
+    height: auto;
+    border: 2px solid #000;
+    display: block;
+    transform: scaleX(-1);
+}
+
+.top-info-text {
+    flex-grow: 1;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.top-info-text p {
+    margin-top: 0;
+}
+
+.top-info-text a {
+    color: #0000EE;
+    text-decoration: none;
+}
+
+.top-info-text a:hover {
+    text-decoration: underline;
+    background-color: transparent;
+    color: #0000EE;
+}
+
+@media (max-width: 650px) {
+    .top-info {
+        flex-direction: column;
+    }
 }
