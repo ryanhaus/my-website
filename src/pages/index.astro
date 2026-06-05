@@ -1,6 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 const projects = await getCollection('projects');
+
+const allTags = projects.flatMap((project) => project.data.tags);
+const uniqueTags = [...new Set(allTags)].sort();
 ---
 
 <html lang="en">
@@ -25,12 +28,23 @@ const projects = await getCollection('projects');
         <h2>Projects</h2>
         <p style="margin-bottom: 0;">Find info on some of my projects below. Click on a project to find out more.</p>
 
+        <br />
+        <div class="filter-menu">
+            <label for="tag-filter"><strong>Filter by tag:</strong></label>
+            <select id="tag-filter" class="filter-dropdown">
+                <option value="all">[All]</option>
+                { uniqueTags.map((tag) => (
+                    <option value={tag}>[{tag}]</option>
+                ))}
+            </select>
+        </div>
+
         <div class="grid">
             { projects.map(async (project) => {
                 const { Content } = await render(project);
 
                 return (
-                    <article class="card">
+                <article class="card" data-tags={project.data.tags.join(',')}>
                         <header class="card-header">
                             <div class="title-group">
                                 <h3 class="card-title">
@@ -63,4 +77,6 @@ const projects = await getCollection('projects');
             })}
         </div>
     </body>
+
+    <script src="/scripts/project-filter.js" is:inline />
 </html>
