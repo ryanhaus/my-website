@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
-const projects = await getCollection('projects');
+const projects = (await getCollection('projects')).sort(
+    (a, b) => b.data.sortDate.valueOf() - a.data.sortDate.valueOf()
+);
 
 const allTags = projects.flatMap((project) => project.data.tags);
 const uniqueTags = [...new Set(allTags)].sort();

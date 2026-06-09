@@ -12,6 +12,7 @@ const projectCollection = defineCollection({
         tags: z.array(z.string()),
         githubUrl: z.string().url().optional(),
         dates: z.string(),
+        sortDate: z.date(),
         desc: z.string(),
         image: z.string().optional(),
     }),
