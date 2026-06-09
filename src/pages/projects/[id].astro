@@ -25,6 +25,9 @@ const { Content } = await render(project);
 
         <header>
             <h1>{ project.data.title }</h1>
+            { project.data.githubUrl &&
+            <a href=`${project.data.githubUrl}` target="_blank">See the source on GitHub</a>
+            }
         </header>
 
         <main class="project-content">
