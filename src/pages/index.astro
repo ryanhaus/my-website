@@ -11,6 +11,7 @@ const uniqueTags = [...new Set(allTags)].sort();
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <title>ryanha.us</title>
         <link rel="stylesheet" href="/css/styles.css" />
     </head>
 
@@ -61,34 +62,32 @@ const uniqueTags = [...new Set(allTags)].sort();
 
                     return (
                     <article class="card" data-tags={project.data.tags.join(',')}>
-                            <header class="card-header">
-                                <div class="title-group">
-                                    <h3 class="card-title">
-                                        <a href={`/projects/${project.id}`} class="card-clickable-overlay">
-                                            {project.data.title}
-                                        </a>
-                                    </h3>
+                        <header class="card-header">
+                            <div class="title-group">
+                                <h3 class="card-title">
+                                    <a href={`/projects/${project.id}`} class="card-clickable-overlay">{project.data.title}</a>
+                                </h3>
 
-                                    { project.data.githubUrl &&
-                                        (<a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="github-link">
-                                            <img src="/assets/github-logo.svg" width="20" height="20" class="github-icon" />
-                                        </a>
-                                    )}
-                                </div>
-                                
-                                <span class="card-date">{project.data.dates}</span>
-                            </header>
-
-                            <p class="card-desc">{project.data.desc}</p>
-
-                            { project.data.image && <img class="card-image" src=`/assets/projects/${project.id}/${project.data.image}` alt={project.data.title} /> }
-
-                            <div class="card-tags">
-                                { project.data.tags.map((tag) => 
-                                    <span class="tag-pill">{tag}</span>
-                                )}
+                                <!-- { project.data.githubUrl && -->
+                                <!--     (<a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="github-link"> -->
+                                <!--         <img src="/assets/github-logo.svg" width="20" height="20" class="github-icon" /> -->
+                                <!--     </a> -->
+                                <!-- )} -->
                             </div>
-                        </article>
+
+                            <span class="card-date">{project.data.dates}</span>
+                        </header>
+
+                        <p class="card-desc">{project.data.desc}</p>
+
+                        { project.data.image && <img class="card-image" src=`/assets/projects/${project.id}/${project.data.image}` alt={project.data.title} /> }
+
+                        <div class="card-tags">
+                            { project.data.tags.map((tag) => 
+                            <span class="tag-pill">{tag}</span>
+                            )}
+                        </div>
+                    </article>
                     )
                 })}
             </div>
