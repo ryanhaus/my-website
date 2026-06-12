@@ -247,7 +247,7 @@ a:hover {
 }
 
 .project-page-link {
-    text-decoration: none;
+    text-decoration: underline;
     font-weight: bold;
 
     margin-left: auto;
