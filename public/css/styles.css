@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 html, body {
     margin: 0;
     padding: 0;
@@ -36,7 +38,8 @@ body {
     border-left: 2px solid #000;
     border-right: 2px solid #000;
 
-    font-family: "Courier New", Courier, monospace;
+    /* font-family: "Courier New", Courier, monospace; */
+    font-family: "Open Sans", sans-serif;
     background-color: #ffffff;
     color: #000000;
 }
@@ -58,7 +61,7 @@ h2 {
 }
 
 .card {
-    position: relative; css
+    position: relative;
     border: 2px solid #000000;
     border-radius: 0;
     padding: 1.5rem;
