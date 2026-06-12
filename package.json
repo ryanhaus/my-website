@@ -12,6 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.4.4"
+    "astro": "^6.4.4",
+    "astro-mermaid": "^2.0.2",
+    "mermaid": "^11.15.0",
+    "remark-gemoji": "^8.0.0"
   }
 }

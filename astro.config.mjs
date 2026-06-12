@@ -1,5 +1,18 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import mermaid from 'astro-mermaid';
+import remarkGemoji from 'remark-gemoji';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+    integrations: [
+        mermaid({
+            theme: 'default',
+            autoTheme: true
+        }),
+    ],
+
+    markdown: {
+        remarkPlugins: [
+            remarkGemoji,
+        ],
+    },
+});
