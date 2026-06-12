@@ -9,6 +9,8 @@ githubUrl: "https://github.com/ryanhaus/rowan-baja-daq"
 desc: "As part of Rowan University's Baja SAE team, I led the design on the Data Acquisition subsystem, which focused on creating a network of sensors throughout an all-terrain vehicle."
 ---
 
+**Note:** this project is still in progress.
+
 As part of Rowan University's [Baja SAE](https://www.bajasae.net/) 2025-2027 team, I had the opportunity to lead the Data Acquisition (DAQ) subsystem.
 This subsystem focuses mainly on designing and implementing a network of sensors (i.e., engine RPM, transmission temperature, ride height, suspension travel, etc.) throughout the vehicle and collecting + processing the data.
 The data can be used for safety purposes (i.e., detecting an overheating transmission early before failure) but can also be used for improving the performance of the vehicle (i.e., are the shocks reacting as expected when coming down from a jump?).
