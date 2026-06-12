@@ -25,10 +25,12 @@ const { Content } = await render(project);
         <a href="#" onclick="history.back(); return false;">&larr; Back</a>
 
         <header>
-            <h1>{ project.data.title }</h1>
-            { project.data.githubUrl &&
-            <a href=`${project.data.githubUrl}` target="_blank">See the source on GitHub</a>
-            }
+            <h1>
+                { project.data.title }
+                <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="github-link">
+                    <img src="/assets/github-logo.svg" width="25" height="25" class="github-icon" />
+                </a>
+            </h1>
         </header>
 
         <main class="project-content">
