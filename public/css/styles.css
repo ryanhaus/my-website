@@ -58,7 +58,7 @@ h2 {
 }
 
 .card {
-    position: relative; 
+    position: relative; css
     border: 2px solid #000000;
     border-radius: 0;
     padding: 1.5rem;
@@ -229,4 +229,27 @@ a:hover {
     padding: 1rem;
     border: 2px solid #000;
     background-color: #f4f4f4; /* Classic gray box for tools */
+}
+
+.project-page-title-container {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    width: 100%;
+
+    border-bottom: 2px solid #000;
+    height: 2em;
+    margin-top: 1em;
+}
+
+.project-page-link {
+    text-decoration: none;
+    font-weight: bold;
+
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 4px;
 }
