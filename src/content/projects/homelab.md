@@ -27,9 +27,10 @@ For the web traffic, I use CloudFlare tunnels and their proxying service.
 config:
     theme: 'neutral'
 ---
-flowchart LR
+flowchart TD
     subgraph tailscale[Tailscale Network]
         subgraph home[Home Network]
+            direction TD
             pi5["Raspberry Pi 5\n(Game servers)"]
             pi3b["Raspberry Pi 3B+\n(Web server)"]
             j5040["ASRock J5040-ITX\n(NAS, Docker manager)"]
@@ -41,11 +42,9 @@ flowchart LR
     cloudflare["Cloudflare Servers\n(Web proxy)"]
     internet[Public Internet]
 
-    j5040 <---> cloudflare
+    home <---> cloudflare
 
-    pi5 <--> digitalocean
-    pi3b <--> digitalocean
-    j5040 <--> digitalocean
+    home <--> digitalocean
 
     cloudflare <-- "HTTP/S Traffic" --> internet
     digitalocean <-- "Other Traffic\n(DNS, game server, etc.)" --> internet
