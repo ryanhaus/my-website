@@ -22,19 +22,21 @@ config:
     theme: 'neutral'
 ---
 flowchart LR
-    subgraph projects[Project Descriptions]
-        direction TD
-        md[Markdown Files\nfor Projects]
-        assets[Project Assets]
+    subgraph my_code[My Code]
+        subgraph projects[Project Descriptions]
+            direction TD
+            md[Markdown Files\nfor Projects]
+            assets[Project Assets]
+        end
+
+        subgraph astro_files[Astro Files]
+            direction TD
+            astro_index[Astro Home\nPage Generator]
+            astro_proj[Astro Project\nPage Generator]
+        end
     end
 
-    subgraph astro_files[Astro Files]
-        direction TD
-        astro_index[Astro Home\nPage Generator]
-        astro_proj[Astro Project\nPage Generator]
-    end
-
-    astro[My code using Astro]
+    astro[Astro]
     html[Generated HTML]
 
 
@@ -48,15 +50,14 @@ flowchart LR
 ```
 
 ## Hosting & Domain
-As for hosting, I am using a Raspberry Pi 3B+ within my Docker Swarm homelab network.
-After making changes, I pull the files from GitHub, convert them into static HTML, and then host them in a Docker container with Apache httpd.
-In the future, I might want to use GitHub Actions or a webhook to automate this, but this is good enough for now.
+As for hosting, I was originally using a Raspberry Pi 3B+ within my Docker Swarm homelab network and Apache httpd, but later decided that it would be better to take advantage of Cloudflare's free static site hosting.
+I've also hooked up a Cloudflare worker to automatically compile the website's HTML on every Git push.
 
 As for the domain, I'm using Cloudflare Registrar to lease the domain, which they offer at-cost so the domain is pretty cheap (~$6 / year).
-This comes with the benefit that I can use Cloudflare's proxying service for free, meaning that I can configure Cloudflare to tunnel directly into my home network and expose the web server without any port forwarding on my part.
-In fact, even though the web server is running on the Pi, you're actually receiving it from Cloudflare and are more than likely viewing a version of this page that is cached on their servers.
+This comes with the benefit that I can use Cloudflare's proxying service for free, which I use for a few of my services.
 
-See the diagram below for a visual representation:
+### New setup
+As mentioned, I changed the website to be automatically compiled & served by Cloudflare. See the diagram below for a visual representation:
 
 ```mermaid
 ---
@@ -64,20 +65,58 @@ config:
     theme: 'neutral'
 ---
 flowchart LR
+    me[Me]
+    github[GitHub]
+
+    subgraph cloudflare[Cloudflare Servers]
+        subgraph worker[Cloudflare Worker]
+            git[Git\nRepo]
+            node["NodeJS\n(Astro)"]
+        end
+
+        sites[Cloudflare\nPages]
+    end
+
+    you[You]
+
+
+    me --git push--> github
+    github --Automatic\naction--> git
+    git --Markdown\nfiles--> node
+    git --Astro\ncode--> node
+    node --Generated\nHTML--> sites
+    sites --ryanha.us--> you
+```
+
+### Old setup
+For comparison, this is what it looked like *before* I switched to using Cloudflare workers and static site hosting:
+```mermaid
+---
+config:
+    theme: 'neutral'
+---
+flowchart LR
+    me[Me]
+
     github[GitHub\nServers]
 
     subgraph pi[Raspberry Pi 3B+]
         git[Git\nRepo]
-        node[NodeJS]
+        node["NodeJS\n(Astro)"]
         httpd[Apache\nhttpd]
     end
 
     cloudflare[Cloudflare\nServers]
     you[You]
 
+    me --git push--> github
     github --git pull--> git
     git --Markdown\nfiles--> node
     git --Astro\ncode--> node
     node --Generated\nHTML--> httpd
     httpd --Cloudflare\nTunnel--> cloudflare --ryanha.us--> you
 ```
+
+Now I don't have to worry about someone unplugging my server, losing power, or some other issue taking down my website anymore :smile:.
+I also don't have to worry about manually pulling & redeploying my website every time I make a change.
+I guess I could've used a GitHub action for that, but might as well just make the jump to this if I'm going that route.
