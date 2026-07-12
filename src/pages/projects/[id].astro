@@ -23,7 +23,7 @@ const { Content } = await render(project);
     </head>
 
     <body>
-        <a href="#" onclick="history.back(); return false;">&larr; Back</a>
+        <a href="#" onclick="document.referrer.includes(window.location.hostname) ? window.history.back() : window.location.href = '/'; return false;">&larr; Back</a>
 
         <div class="project-page-title-container">
             <h1 style="border-bottom: none;">{project.data.title}</h1>
