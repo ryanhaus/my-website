@@ -27,9 +27,11 @@ const { Content } = await render(project);
 
         <div class="project-page-title-container">
             <h1 style="border-bottom: none;">{project.data.title}</h1>
-            <a class="project-page-link github-link" href={project.data.githubUrl} target="_blank" rel="noopener noreferrer">
-                See on GitHub: <img src="/assets/github-logo.svg" width="32" height="32" class="github-icon" />
-            </a>
+            { project.data.githubUrl &&
+                <a class="project-page-link github-link" href={project.data.githubUrl} target="_blank" rel="noopener noreferrer">
+                    See on GitHub: <img src="/assets/github-logo.svg" width="32" height="32" class="github-icon" />
+                </a>
+            }
         </div>
 
         <main class="project-content">
