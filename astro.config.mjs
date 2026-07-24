@@ -15,5 +15,8 @@ export default defineConfig({
         remarkPlugins: [
             remarkGemoji,
         ],
+        shikiConfig: {
+            theme: "github-light",
+        },
     },
 });
