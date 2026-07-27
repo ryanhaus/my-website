@@ -5,7 +5,7 @@ tags: ["nokia", "fpga"]
 dates: "Jun - Jul '25"
 sortDate: 2025-06-01
 image: "block_diagram.png"
-desc: "I wrote an implementation of Microchip's UPDI (Unified Program and Debug Interface) to run on an FGPA in SystemVerilog."
+desc: "I wrote an implementation of Microchip's UPDI (Unified Program and Debug Interface) to run on an FPGA in SystemVerilog."
 ---
 
 During my second internship with Nokia (summer '25), I wrote an implementation of Microchip's UPDI (Universal Program and Debug Interface) protocol from scratch in SystemVerilog.
