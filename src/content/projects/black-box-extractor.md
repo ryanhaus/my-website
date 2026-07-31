@@ -15,7 +15,7 @@ This data can be accessed through the power supply's PMBus interface (which is a
 This project ended up extending over three summers.
 The first summer ('24), I designed the initial revision of the PCB and got the design working with one model of power supply.
 Then, the next year ('25), I made a second revision of the PCB fixing some issues I encountered with the first, and added support for another model of power supply.
-The year after that ('26), I tried out using an agentic tool (Cursor) to add support for another model of power supply and add some other quality-of-life features to the software.
+The year after that ('26), I tried out using an agentic AI tool (Cursor) to add support for another model of power supply and add some other quality-of-life features to the software.
 
 ## Summer 2024
 ### Initial PCB design
